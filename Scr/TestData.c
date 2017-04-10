@@ -18,6 +18,15 @@
 		{300,   1200, 400}, // TIME_WORK
 		{300,   1200, 800}	// TIME_STOP		
 	};
+
+	uint16_t GetLimit(uint8_t index_limit)
+	{
+		if (index_limit >= NUMBER_OF_BITS)
+		{
+			return 0;
+		}
+		return MinMaxDef[index_limit].min;
+	}
   
 	void SetTestBit(uint8_t i)
 	{

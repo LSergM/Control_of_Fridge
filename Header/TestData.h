@@ -11,5 +11,6 @@
 
   uint8_t TestData(void);
   void SetTestBitAll(void);
+  uint16_t GetLimit(uint8_t index_limit);
 
 #endif

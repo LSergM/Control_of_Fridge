@@ -31,6 +31,7 @@ char str_buf[NUMCHAR + 10];
 #define   F_1MS             0
 #define   F_1S              1
 #define   DS18B20_TIME_OUT    5
+#define   SENSOR_IS_BROKEN    10
 
 void main( void )
 { 
@@ -67,7 +68,14 @@ void main( void )
     c18b20 = read_ds18b20();
     if (DS1820_ERROR == c18b20)
     {
-      D_pc.ModBUS_r_reg[DS18B20_CNT_ERROR]++;
+      if(D_pc.ModBUS_r_reg[DS18B20_CNT_ERROR] > SENSOR_IS_BROKEN)
+      {
+		  D_pc.ModBUS_rw_reg[SYSTEM_CONFIG] = WORK_FOR_TIME;
+	  }
+	  else
+	  {
+		  D_pc.ModBUS_r_reg[DS18B20_CNT_ERROR]++;
+	  }
       stSensor = NOT_SENSOR;
 //      sprintf(str_buf, "----");
     }
@@ -88,6 +96,7 @@ void main( void )
     }
     else if(DS1820_OK != c18b20)
     {
+		D_pc.ModBUS_r_reg[DS18B20_CNT_ERROR] = 0;	
       D_pc.ModBUS_r_reg[TIME_OUT_SENSOR] = 0;
       D_pc.ModBUS_r_reg[DS18B20_DATA] = (int16_t)(0.0625 * c18b20);
       stSensor = DETECT_SENSOR;
@@ -102,21 +111,14 @@ void main( void )
 #ifndef TEST_MODE
                   if (D_pc.ModBUS_rw_reg[SYSTEM_CONFIG] == WORK_OFF)
                   {
-                    stCompressor = STOPING;
+							stCompressor = STOPING;
                   }
                   else if (D_pc.ModBUS_rw_reg[SYSTEM_CONFIG] == WORK_FOR_TIME)
                   {             
                     if (D_pc.ModBUS_r_reg[STATE_TIMER] >= D_pc.ModBUS_rw_reg[TIME_STOP])
                     {
                       stCompressor = STARTING; 
-                    }
-                    else
-                    {
-                      if(timer_flags & (1 << F_1S))
-                      {
-                        D_pc.ModBUS_r_reg[STATE_TIMER]++;
-                      }
-                    }                    
+                    }                                        
                   }
                   else
                   {
@@ -124,33 +126,22 @@ void main( void )
                     {
                       if ((int16_t)D_pc.ModBUS_r_reg[DS18B20_DATA] >= (int16_t)D_pc.ModBUS_rw_reg[T_MAX] )
                       {
-                        stCompressor = STARTING;
+							if(GetLimit(TIME_WORK) < D_pc.ModBUS_r_reg[STATE_TIMER] )
+						   {
+								stCompressor = STOPING;
+						   }
                       }
                     }
                     else if (D_pc.ModBUS_r_reg[STATE_TIMER] >= D_pc.ModBUS_rw_reg[TIME_STOP])
                     {
                       stCompressor = STARTING; 
-                    } 
-                    else
-                    {
-                      if(timer_flags & (1 << F_1S))
-                      {
-                        D_pc.ModBUS_r_reg[STATE_TIMER]++;
-                      }
-                    }                    
+                    }                                         
                   }
 #else
                     if (D_pc.ModBUS_r_reg[STATE_TIMER] >= DEF_TIME_STOP)
                     {
                       stCompressor = STARTING; 
-                    }
-                    else
-                    {
-                      if(timer_flags & (1 << F_1S))
-                      {
-                        D_pc.ModBUS_r_reg[STATE_TIMER]++;
-                      }
-                    }                                      
+                    }                                                          
 #endif                  
                   break;
     case STARTING:  
@@ -172,14 +163,7 @@ void main( void )
                     if(D_pc.ModBUS_r_reg[STATE_TIMER] >= D_pc.ModBUS_rw_reg[TIME_WORK])
                       {                      
                         stCompressor = STOPING;                     
-                      }
-                      else
-                      {
-                        if(timer_flags & (1 << F_1S))
-                        {
-                          D_pc.ModBUS_r_reg[STATE_TIMER]++;
-                        }
-                      }
+                      }                      
                   }
                   else
                   {
@@ -187,7 +171,10 @@ void main( void )
                     {
                       if((int16_t)D_pc.ModBUS_r_reg[DS18B20_DATA] <= (int16_t)D_pc.ModBUS_rw_reg[T_MIN])                       
                       {
-                        stCompressor = STOPING;
+						   if(GetLimit(TIME_STOP) < D_pc.ModBUS_r_reg[STATE_TIMER] )
+						   {
+								stCompressor = STOPING;
+						   }
                       }
                     }
                     else 
@@ -195,14 +182,7 @@ void main( void )
                       if(D_pc.ModBUS_r_reg[STATE_TIMER] >= D_pc.ModBUS_rw_reg[TIME_WORK])
                       {                      
                         stCompressor = STOPING;                     
-                      }
-                      else
-                      {
-                        if(timer_flags & (1 << F_1S))
-                        {
-                          D_pc.ModBUS_r_reg[STATE_TIMER]++;
-                        }
-                      }                    
+                      }                                          
                     }
                   }
 #else
@@ -210,13 +190,6 @@ void main( void )
                     {                      
                       stCompressor = STOPING;                     
                     }
-                    else
-                    {
-                      if(timer_flags & (1 << F_1S))
-                      {
-                        D_pc.ModBUS_r_reg[STATE_TIMER]++;
-                      }
-                    }                  
 #endif                  
                   break; 
     default:
@@ -226,6 +199,12 @@ void main( void )
                 D_pc.ModBUS_r_reg[STATE_TIMER] = 0;
                   break;
     }
+    
+    if(timer_flags & (1 << F_1S))
+	{
+		D_pc.ModBUS_r_reg[STATE_TIMER]++;
+	}
+	
     D_pc.ModBUS_r_reg[STATE_PUMP] = stCompressor;
     if (WORK == stCompressor)
     {
