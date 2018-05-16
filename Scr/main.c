@@ -1,15 +1,15 @@
 #include "main.h"
 #include "delay.h"
-#include <ioavr.h>
+#include "Configuration.h"
 #include <stdint.h>
 #include <stdio.h>
-#include <intrinsics.h>
+//#include <intrinsics.h>
 #include "eemem.h"
 #include "led_digit.h"
 #include "modbus.h"
 #include "menu.h"
 #include "un_drebezg.h"
-#include "..\\OneWire\OneWireSM.h"
+#include "OneWireSM.h"
 #include "TestData.h"
 #include "Configuration.h"
 
@@ -20,18 +20,19 @@
 uint8_t fl=0;
 char str_buf[NUMCHAR + 10];
 
-#define   STOP          0
-#define   STARTING      1
-#define   STOPING       2
-#define   WORK          3
+#define   STOP          		0
+#define   STARTING      		1
+#define   STOPING       		2
+#define   WORK          		3
 
-#define   DETECT_SENSOR          1
-#define   NOT_SENSOR             0
+#define   DETECT_SENSOR         1
+#define   NOT_SENSOR            0
 
-#define   F_1MS             0
-#define   F_1S              1
-#define   DS18B20_TIME_OUT    5
-#define   SENSOR_IS_BROKEN    10
+#define   F_1MS             	0
+#define   F_1S              	1
+
+#define   DS18B20_TIME_OUT    	5
+#define   SENSOR_IS_BROKEN    	10
 
 void main( void )
 { 
@@ -40,16 +41,12 @@ void main( void )
   uint8_t timer_flags = 0;
   
   uint16_t timer_1msec = 0;  
-  int16_t c18b20 = STOP;
+   int16_t c18b20 = STOP;
 
   InitCPU();
-/*  
-  while(1)
-  {
-    update_hc595();
-  };
-*/  
+
   __enable_interrupt();
+
   while(1)
   {
 //    __watchdog_reset();
@@ -233,7 +230,7 @@ void InitCPU(void)
     DDRD  = (1<<DDD7 | 1<<DDD6 | 0<<DDD5);
     PORTD = (1 << PORTB5);
     
-    TCCR1B = (0<<ICNC1|0<<ICES1|0<<WGM13|0<<WGM12|0<<CS12|1<<CS11|0<<CS10); //Таймер - 0 "Остановлен"
+    TCCR1B = (0<<ICNC1|0<<ICES1|0<<WGM13|0<<WGM12|0<<CS12|1<<CS11|0<<CS10); //пїЅпїЅпїЅпїЅпїЅпїЅ - 0 "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
     REG_TIMSK_1  = (1 << TOIE1);//
     REG_UCSRA  = 0;
     REG_UCSRB  = 0;
@@ -258,8 +255,12 @@ void InitCPU(void)
 #endif    
 }
 
-#pragma vector = DEF_USART_TXC_vect
-__interrupt void Usart1TxVect(void) 
+#if COPMPILER == IAR_COMPILER
+	#pragma vector = DEF_USART_TXC_vect
+	__interrupt void Usart1TxVect(void)
+#elif COPMPILER == GCC_COMPILER
+	void Usart1TxVect(void)
+#endif
 {
 	D_pc.Counter_Byte_To_PC++;
 	if (D_pc.Counter_Byte_To_PC < D_pc.Num_Byte_RW_To_PC) 
@@ -274,10 +275,15 @@ __interrupt void Usart1TxVect(void)
 	    }	
 }
 
-#pragma vector = DEF_USART_RXC_vect
-__interrupt void Usart1RxVect(void) 
+
+#if COPMPILER == IAR_COMPILER
+	#pragma vector = DEF_USART_RXC_vect
+	__interrupt void Usart1RxVect(void)
+#elif COPMPILER == GCC_COMPILER
+	void Usart1RxVect(void)
+#endif
 {
-	REG_TCCR2 = 0; //Остановить таймер 0
+	REG_TCCR2 = 0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 0
 	
 	if (D_pc.Counter_Byte_To_PC < UARTBUF)  
   {
@@ -286,21 +292,28 @@ __interrupt void Usart1RxVect(void)
   }
   else REG_UCSRB &= ~(1<<B_RXEN | 1<<B_RXCIE);
 
-	TCNT2 = CNT_SPEED; //237    //Обнулить таймер 0 1,25 мс
-	REG_TCCR2 = 0x07;//0B00000101; //Запустить таймер 0 c предделителем /1024	
+	TCNT2 = CNT_SPEED; //237    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 0 1,25 пїЅпїЅ
+	REG_TCCR2 = 0x07;//0B00000101; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 0 c пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ /1024	
 }
 
-
-#pragma vector = TIMER2_OVF_vect
-__interrupt void Timer2OverFVect(void) 
+#if COPMPILER == IAR_COMPILER
+	#pragma vector = TIMER2_OVF_vect
+	__interrupt void Timer2OverFVect(void)
+#elif COPMPILER == GCC_COMPILER
+	void Timer2OverFVect(void)
+#endif
 {
     REG_TCCR2 = 0;     
-    REG_UCSRB &= ~(1<<B_RXEN|1<<B_RXCIE); //	Отключить приемник UART ModBus																										//	Запретить прерывание приемника UARt
+    REG_UCSRB &= ~(1<<B_RXEN|1<<B_RXCIE); //	пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ UART ModBus																										//	пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ UARt
     D_pc.Flags_Link_To_PC |= (1<<RECIVED_POCET_FROM_PC);
 }
 
-#pragma vector = TIMER1_OVF_vect
-__interrupt void Timer1OverFVect(void) 
+#if COPMPILER == IAR_COMPILER
+	#pragma vector = TIMER1_OVF_vect
+	__interrupt void Timer1OverFVect(void)
+#elif COPMPILER == GCC_COMPILER
+	void Timer1OverFVect(void)
+#endif
 {  
   fl    = 1;
   TCNT1 = 64535;

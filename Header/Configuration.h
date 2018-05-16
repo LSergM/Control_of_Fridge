@@ -2,9 +2,27 @@
 #define _CONFIGURATION_H_
   #include"stdint.h"
 
+	#define IAR_COMPILER	1
+	#define GCC_COMPILER	2
+	#define COPMPILER		GCC_COMPILER
+
+	#define MCU_ATMEGA_168A	1
+	#define MCU_ATMEGA_8A	2
+	#define MCU_TYPE		MCU_ATMEGA_168A
+
+	#if COPMPILER == IAR_COMPILER
+		#include <ioavr.h>
+		#define FLASH_DECLARE(x) __flash x
+	#elif COPMPILER == GCC_COMPILER
+		#include <avr\io.h>
+		#define FLASH_DECLARE(x) x __attribute__((__progmem__))
+	#else
+		#error "Error, compiler doesn't chosen"
+	#endif
+
   //#define TEST_MODE
     
-  #if defined(__ATmega168A__)
+  #if (MCU_TYPE	==	MCU_ATMEGA_168A)
     #define REG_EEWE      EEPE
     #define REG_EEMWE     EEMPE
     #define REG_TIMSK_1   TIMSK1  
@@ -36,7 +54,7 @@
     #define DEF_USART_RXC_vect USART_RX_vect  
     #define REG_TCCR2       TCCR2B        
   
-  #elif defined(__ATmega8A__)
+  #elif (MCU_TYPE	==	MCU_ATMEGA_8A)
     #define REG_EEWE      EEWE
     #define REG_EEMWE     EEMWE
     #define REG_TIMSK_1   TIMSK 

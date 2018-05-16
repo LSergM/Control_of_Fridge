@@ -1,9 +1,9 @@
 /* Includes ------------------------------------------------------------------*/
 #include "pwm_pcb.h"
 
-__flash unsigned char volatile __io*  IN_PORT[INn] = {&ESC_DOWN_PORT, &ENT_UP_PORT, &DOOR_CLOSE_PORT};
-__flash const unsigned char IN_PIN[INn]            = {ESC_DOWN_PIN,  ENT_UP_PIN,              DOOR_CLOSE_PIN};
-__flash const unsigned char IN_TIME[INn]           = {ESC_DOWN_TIME, ENT_UP_TIME, DOOR_CLOSE_TIME};
+FLASH_DECLARE(unsigned char volatile *  IN_PORT[INn]) = {&ESC_DOWN_PORT, &ENT_UP_PORT, &DOOR_CLOSE_PORT};
+FLASH_DECLARE(const unsigned char IN_PIN[INn])        = {ESC_DOWN_PIN,  ENT_UP_PIN,  DOOR_CLOSE_PIN};
+FLASH_DECLARE(const unsigned char IN_TIME[INn])       = {ESC_DOWN_TIME, ENT_UP_TIME, DOOR_CLOSE_TIME};
 /*
 void LcdPinOff(LDC_TypeDef lcdpin)
 {

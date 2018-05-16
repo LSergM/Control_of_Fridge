@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cdtprojectproperties>
+  <section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.IncludePaths">
+    <language name="GNU C with IAR extensions (ARM v7)">
+      <includepath>C:\Projects\DGOSWorkspace\DGoS\SA\DGOSExEPDB\..\..\..\..\Lib\DGOS0.1.6\ARMGCCV6.3.1\BSP\RTOS\FreeRTOS\LPC54608\SDK\ide_tools\tools\features\include\</includepath>
+      <includepath>C:\Projects\DGOSWorkspace\DGoS\SA\DGOSExEPDB\..\..\..\..\Lib\DGOS0.1.6\ARMGCCV6.3.1\BSP\RTOS\FreeRTOS\LPC54608\SDK\board\</includepath>
+      <includepath>C:\Projects\DGOSWorkspace\DGoS\SA\DGOSExEPDB\..\..\..\..\Lib\DGOS0.1.6\ARMGCCV6.3.1\BSP\RTOS\FreeRTOS\LPC54608\SDK\drivers\</includepath>
+      <includepath>C:\Projects\DGOSWorkspace\DGoS\SA\DGOSExEPDB\..\..\..\..\Lib\DGOS0.1.6\ARMGCCV6.3.1\BSP\RTOS\FreeRTOS\LPC54608\SDK\CMSIS\</includepath>
+      <includepath>C:\Projects\DGOSWorkspace\DGoS\SA\DGOSExEPDB\..\..\..\..\Lib\DGOS0.1.6\ARMGCCV6.3.1\FW\</includepath>
+      <includepath>C:\Projects\DGOSWorkspace\DGoS\SA\DGOSExEPDB\..\..\..\..\Lib\DGOS0.1.6\ARMGCCV6.3.1\BSP\OAL\</includepath>
+      <includepath>C:\Projects\DGOSWorkspace\DGoS\SA\DGOSExEPDB\..\..\..\..\Lib\DGOS0.1.6\ARMGCCV6.3.1\BSP\RTOS\FreeRTOS\</includepath>
+      <includepath>C:\Projects\DGOSWorkspace\DGoS\SA\DGOSExEPDB\..\..\..\..\Lib\DGOS0.1.6\ARMGCCV6.3.1\BSP\RTOS\FreeRTOS\LPC54608\ARM_CM4F\</includepath>
+      <includepath>C:\DGSTC\GNU Tools ARM Embedded\6 2017-q2-update\arm\inc\c</includepath>
+    </language>
+  </section>
+  <section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.Macros">
+    <language name="GNU C with IAR extensions (ARM v7)">
+      <macro>
+        <name>KITS_LPC54608</name>
+        <value>1</value>
+      </macro>
+      <macro>
+        <name>uint32_t</name>
+        <value>unsigned int</value>
+      </macro>
+      <macro>
+        <name>int32_t</name>
+        <value>int</value>
+      </macro>
+      <macro>
+        <name>uint16_t</name>
+        <value>unsigned short</value>
+      </macro>
+      <macro>
+        <name>int16</name>
+        <value>short</value>
+      </macro>
+      <macro>
+        <name>uint8_t</name>
+        <value>char</value>
+      </macro>
+      <macro>
+        <name>__IO</name>
+        <value>volatile</value>
+      </macro>
+      <macro>
+        <name>__I</name>
+        <value>volatile</value>
+      </macro>
+      <macro>
+        <name>__O</name>
+        <value>volatile</value>
+      </macro>
+    </language>
+  </section>
+</cdtprojectproperties>

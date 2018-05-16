@@ -1,6 +1,9 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
+#define COPMPILER GCC_COMPILER
+
+
 //14 мсек
 #define ICR1_DEF 14000
 //Сколько элекр-х градусов на 1мксек
