@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>2</fileVersion>
+  <fileChecksum>370694049</fileChecksum>
+  <configuration>
+    <name>Debug</name>
+    <outputs>
+      <file>$PROJ_DIR$\Scr\buttons.c</file>
+      <file>$PROJ_DIR$\Scr\eemem.c</file>
+      <file>$PROJ_DIR$\Scr\led_digit.c</file>
+      <file>$PROJ_DIR$\Scr\main.c</file>
+      <file>$PROJ_DIR$\Scr\menu.c</file>
+      <file>$PROJ_DIR$\Scr\modbus.c</file>
+      <file>$PROJ_DIR$\Scr\OneWireSM.c</file>
+      <file>$PROJ_DIR$\Scr\OWISWBitFunctions.c</file>
+      <file>$PROJ_DIR$\Scr\pwm_pcb.c</file>
+      <file>$PROJ_DIR$\Scr\TestData.c</file>
+      <file>$PROJ_DIR$\Scr\un_drebezg.c</file>
+      <file>$TOOLKIT_DIR$\lib\dlib\dlAVR-3s-ec_mul-sf-n.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\led_digit.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\TestData.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\pwm_pcb.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\modbus.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\menu.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\OneWireSM.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\stdint.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\un_drebezg.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\Fridge_Control.pbd</file>
+      <file>$PROJ_DIR$\Debug\Exe\Fridge_Control.d90</file>
+      <file>$PROJ_DIR$\Header\TestData.h</file>
+      <file>$PROJ_DIR$\Header\OWIPolled.h</file>
+      <file>$PROJ_DIR$\Header\un_drebezg.h</file>
+      <file>$PROJ_DIR$\Header\buttons.h</file>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+      <file>$TOOLKIT_DIR$\inc\iom168a.h</file>
+      <file>$PROJ_DIR$\Header\menu.h</file>
+      <file>$PROJ_DIR$\Header\led_digit.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\ysizet.h</file>
+      <file>$TOOLKIT_DIR$\inc\ioavr.h</file>
+      <file>$PROJ_DIR$\Header\eemem.h</file>
+      <file>$TOOLKIT_DIR$\inc\bitdefinitions\iom168a.inc</file>
+      <file>$PROJ_DIR$\Header\configuration.h</file>
+      <file>$TOOLKIT_DIR$\inc\iomacro.h</file>
+      <file>$PROJ_DIR$\Header\OWIdefs.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\stdio.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\ystdio.h</file>
+      <file>$PROJ_DIR$\Header\pwm_pcb.h</file>
+      <file>$PROJ_DIR$\Header\modbus.h</file>
+      <file>$PROJ_DIR$\Header\delay.h</file>
+      <file>$PROJ_DIR$\Header\main.h</file>
+      <file>$PROJ_DIR$\Header\OneWireSM.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.r90</file>
+      <file>$TOOLKIT_DIR$\inc\inavr.h</file>
+      <file>$PROJ_DIR$\Header\OWIBitFunctions.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\led_digit.r90</file>
+      <file>$PROJ_DIR$\Debug\Obj\buttons.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\buttons.r90</file>
+      <file>$PROJ_DIR$\Debug\Obj\OWISWBitFunctions.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\menu.r90</file>
+      <file>$PROJ_DIR$\Debug\Obj\modbus.r90</file>
+      <file>$PROJ_DIR$\Debug\Obj\OneWireSM.r90</file>
+      <file>$PROJ_DIR$\Debug\Obj\OWISWBitFunctions.r90</file>
+      <file>$PROJ_DIR$\Debug\Obj\pwm_pcb.r90</file>
+      <file>$PROJ_DIR$\Debug\Obj\TestData.r90</file>
+      <file>$PROJ_DIR$\Debug\Obj\un_drebezg.r90</file>
+      <file>$PROJ_DIR$\Debug\Obj\eemem.pbi</file>
+    </outputs>
+    <file>
+      <name>$PROJ_DIR$\Scr\buttons.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 55</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 56</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 32 38 34 42 40 23 15 12 22 24 16 25</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 32 38 34 42 40 23 15 12 22 11 24 16 25</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Scr\eemem.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 65</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 41 23 15 12 22 24 16 25 39 38 34 42 40 33</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 41 23 15 12 22 11 24 16 25 39 38 34 42 40 33</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Scr\led_digit.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 13</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 54</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 36 38 34 42 40 23 15 12 22 24 16 25 47 46</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Scr\main.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 14</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 51</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 49 48 52 33 38 34 42 40 23 15 12 22 24 16 25 44 37 45 39 36 47 46 35 31 29 41</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Scr\menu.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 20</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 58</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 35 38 34 42 40 23 15 12 22 24 16 25 32 31 46 47 36</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Scr\modbus.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 19</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 59</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 47 38 34 42 40 46 39 33 41 23 15 12 22 24 16 25</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Scr\OneWireSM.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 21</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 60</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 50 23 15 12 22 24 16 25 53 43 38 34 42 40 30 33</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 50 23 15 12 22 11 24 16 25 53 43 38 34 42 40 30 33</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Scr\OWISWBitFunctions.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 57</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 61</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 30 38 34 42 40 52 33 53 43</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 30 38 34 42 40 52 33 53 43</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Scr\pwm_pcb.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 62</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 46 38 34 42 40</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Scr\TestData.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 17</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 63</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 29 23 15 12 22 24 16 25 47 38 34 42 40 46</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 29 23 15 12 22 11 24 16 25 47 38 34 42 40 46</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Scr\un_drebezg.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 26</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 64</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 31 46 38 34 42 40</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Obj\Fridge_Control.pbd</name>
+      <inputs>
+        <tool>
+          <name>BILINK</name>
+          <file> 57 21 17 55 65 13 14 20 19 18 26</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 28</file>
+        </tool>
+      </outputs>
+    </file>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>XLINK</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\Scr\eemem.c</name>
+      <tool>ICCAVR</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\Scr\led_digit.c</name>
+      <tool>ICCAVR</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\Scr\main.c</name>
+      <tool>ICCAVR</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\Scr\menu.c</name>
+      <tool>ICCAVR</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\Scr\modbus.c</name>
+      <tool>ICCAVR</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\Scr\pwm_pcb.c</name>
+      <tool>ICCAVR</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\Scr\un_drebezg.c</name>
+      <tool>ICCAVR</tool>
+    </forcedrebuild>
+  </configuration>
+  <configuration>
+    <name>Release</name>
+    <outputs/>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>XLINK</tool>
+    </forcedrebuild>
+  </configuration>
+</project>
+
+
