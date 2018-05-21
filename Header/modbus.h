@@ -1,9 +1,8 @@
 #ifndef _MODBUS_H_
 #define _MODBUS_H_
 
-//#include <iotiny2313.h>
-#include "ioavr.h"
-#include "pwm_pcb.h"
+  #include "Configuration.h"
+  #include "pwm_pcb.h"
 
 #define UARTBUF                     32
 #define NWBUF                       UARTBUF

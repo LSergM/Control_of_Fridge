@@ -1,5 +1,5 @@
 #include "main.h"
-#include "delay.h"
+//#include "delay.h"
 #include "Configuration.h"
 #include <stdint.h>
 #include <stdio.h>
@@ -244,7 +244,9 @@ void InitCPU(void)
     REG_UBRRL = 51;//??? 19200 bit/s
        
     unsigned char adr;
-    for(unsigned char i=0; i < NUM_NOT_TO_EE; i++)
+    unsigned char i;
+
+    for(i=0; i < NUM_NOT_TO_EE; i++)
     {
       adr = i*2;
       D_pc.ModBUS_rw_reg[i] =  (eeprom_read_byte(adr + START_ADR_EE_DATA)<<8)

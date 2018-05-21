@@ -1,6 +1,5 @@
 #include "modbus.h"
 #include "eemem.h"
-#include "configuration.h"
 
 __flash const unsigned char srCRCHi[256] = { 0x00, 0xC1, 0x81, 0x40, 0x01,
 		0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x01,
@@ -52,7 +51,8 @@ struct D_pc_str D_pc;
 
 unsigned int GetCRC16(unsigned char *buf, unsigned char bufsize) 
 {
-	unsigned char CRC_Low = 0xFF, CRC_High = 0xFF, k, carry;
+	uint8_t CRC_Low = 0xFF, CRC_High = 0xFF, k, carry;
+
 	for (k = 0; k < bufsize; k++) 
         {
 		carry = CRC_Low ^ buf[k];
@@ -64,8 +64,8 @@ unsigned int GetCRC16(unsigned char *buf, unsigned char bufsize)
 
 void Link_To_PC(void) 
 {
-	unsigned char NumWords, reg, i = 0;
-	unsigned char err = 0;//,  dv, lbm;  //bbn,
+	uint8_t NumWords, reg, i = 0;
+	uint8_t err = 0;//,  dv, lbm;  //bbn,
 
 	if(D_pc.Flags_Link_To_PC&(1<<RECIVED_POCET_FROM_PC)) 
         {
@@ -165,7 +165,9 @@ void Link_To_PC(void)
 
 			*(unsigned int *) &D_pc.mw[D_pc.Num_Byte_RW_To_PC] = GetCRC16((void *) &D_pc.mw, D_pc.Num_Byte_RW_To_PC);
 			D_pc.Num_Byte_RW_To_PC += 2;
-			for(unsigned char tt=0; tt<NWBUF; tt++){
+
+			uint8_t tt;
+			for(tt = 0; tt<NWBUF; tt++){
 				D_pc.mr[tt]=0;
 			}
 			REG_UCSRB |= (1<<B_TXEN|1<<B_TXCIE);

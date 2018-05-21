@@ -1,7 +1,7 @@
 #ifndef __MENU_H
 #define __MENU_H
-        #include "ioavr.h"
-        #include <stdint.h>
+
+        #include "Configuration.h"
 
         #define K_ESC           1
         #define K_ENT_UP        2

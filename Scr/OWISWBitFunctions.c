@@ -23,8 +23,8 @@
 
 #ifdef OWI_SOFTWARE_DRIVER
 
-#include <ioavr.h>
-#include <inavr.h>
+//#include <ioavr.h>
+//#include <inavr.h>
 
 #include "OWIBitFunctions.h"
 
@@ -54,11 +54,8 @@ void OWI_Init(unsigned char pins)
  *  \param  pins    A bitmask of the buses to write to.
  */
 void OWI_WriteBit1(unsigned char pins)
-{
-    unsigned char intState;
-    
+{   
     // Disable interrupts.
-    intState = __save_interrupt();
     __disable_interrupt();
     
     // Drive bus low and delay.
@@ -70,7 +67,7 @@ void OWI_WriteBit1(unsigned char pins)
     __delay_cycles(OWI_DELAY_B_STD_MODE);
     
     // Restore interrupts.
-    __restore_interrupt(intState);
+    __enable_interrupt();
 }
 
 
@@ -82,11 +79,8 @@ void OWI_WriteBit1(unsigned char pins)
  *  \param  pins    A bitmask of the buses to write to.
  */
 void OWI_WriteBit0(unsigned char pins)
-{
-    unsigned char intState;
-    
+{   
     // Disable interrupts.
-    intState = __save_interrupt();
     __disable_interrupt();
     
     // Drive bus low and delay.
@@ -98,7 +92,7 @@ void OWI_WriteBit0(unsigned char pins)
     __delay_cycles(OWI_DELAY_D_STD_MODE);
     
     // Restore interrupts.
-    __restore_interrupt(intState);
+    __enable_interrupt();
 }
 
 
@@ -112,11 +106,9 @@ void OWI_WriteBit0(unsigned char pins)
  */
 unsigned char OWI_ReadBit(unsigned char pins)
 {
-    unsigned char intState;
     unsigned char bitsRead;
     
     // Disable interrupts.
-    intState = __save_interrupt();
     __disable_interrupt();
     
     // Drive bus low and delay.
@@ -132,7 +124,7 @@ unsigned char OWI_ReadBit(unsigned char pins)
     __delay_cycles(OWI_DELAY_F_STD_MODE);
     
     // Restore interrupts.
-    __restore_interrupt(intState);
+    __enable_interrupt();
     
     return bitsRead;
 }
@@ -150,11 +142,9 @@ unsigned char OWI_ReadBit(unsigned char pins)
  */
 unsigned char OWI_DetectPresence(unsigned char pins)
 {
-    unsigned char intState;
     unsigned char presenceDetected;
     
     // Disable interrupts.
-    intState = __save_interrupt();
     __disable_interrupt();
     
     // Drive bus low and delay.
@@ -170,10 +160,9 @@ unsigned char OWI_DetectPresence(unsigned char pins)
     __delay_cycles(OWI_DELAY_J_STD_MODE);
     
     // Restore interrupts.
-    __restore_interrupt(intState);
+    __enable_interrupt();;
     
     return presenceDetected;
 }
-
 
 #endif

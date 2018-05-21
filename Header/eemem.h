@@ -1,8 +1,7 @@
 #ifndef _EEMEM_H_
 #define _EEMEM_H_
 
-#include "ioavr.h"
-#include <intrinsics.h>
+	#include "Configuration.h"
 
 #define START_ADR_EE_DATA 2
 

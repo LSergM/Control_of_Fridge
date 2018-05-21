@@ -1,6 +1,7 @@
 #ifndef _CONFIGURATION_H_
 #define _CONFIGURATION_H_
-  #include"stdint.h"
+    
+    #include"stdint.h"
 
 	#define IAR_COMPILER	1
 	#define GCC_COMPILER	2
@@ -12,9 +13,11 @@
 
 	#if COPMPILER == IAR_COMPILER
 		#include <ioavr.h>
+        #include <intrinsics.h>    
 		#define FLASH_DECLARE(x) __flash x
 	#elif COPMPILER == GCC_COMPILER
-		#include <avr\io.h>
+		#include <avr/io.h>
+        #include <avr/interrupt.h>
 		#define FLASH_DECLARE(x) x __attribute__((__progmem__))
 	#else
 		#error "Error, compiler doesn't chosen"

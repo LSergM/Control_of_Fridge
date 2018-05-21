@@ -1,7 +1,8 @@
+	
+	#include "Configuration.h"
 	#include "OneWireSM.h"
 	#include "OWIBitFunctions.h"
-        #include "OWIPolled.h"
-        #include <intrinsics.h>
+    #include "OWIPolled.h"    
 	
 	typedef struct
 	{	

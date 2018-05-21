@@ -2,8 +2,9 @@
 #define BUT_H
 
 
-	#include <ioavr.h>
-        #include <stdint.h>
+	//#include <ioavr.h>
+	#include "Configuration.h"
+    #include <stdint.h>
 
 	#define FLAG_BUT_PRESSED    (1<<0)
 	#define FLAG_BUT_HOLD       (1<<1)

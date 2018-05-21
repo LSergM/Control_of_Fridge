@@ -38,9 +38,9 @@ typedef enum
 #define PWM_D3_PORT                	PIND
 #define PWM_D3_TIME			20
 */
-FLASH_DECLARE(unsigned char volatile * IN_PORT[INn]);
-FLASH_DECLARE(const unsigned char IN_PIN[INn]);
-FLASH_DECLARE(const unsigned char IN_TIME[INn]);
+//FLASH_DECLARE(const uint8_t volatile * IN_PORT[INn]);
+FLASH_DECLARE(const uint8_t IN_PIN[INn]);
+FLASH_DECLARE(const uint8_t IN_TIME[INn]);
 
 #define RELE_ON                  PORTB |=  (1 << PORTB1)
 #define RELE_OFF                 PORTB &= ~(1 << PORTB1)

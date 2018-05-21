@@ -1,6 +1,5 @@
-#include "configuration.h"
 #include "eemem.h"
-#include "stdint.h"
+#include <stdint.h>
 
 uint16_t ee_buf_adr[EE_BUF_NUM];
 uint8_t  ee_buf_data[EE_BUF_NUM];

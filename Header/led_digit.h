@@ -2,8 +2,8 @@
 #ifndef __led_digit
 #define __led_digit
 
-#include "ioavr.h" 
-#include <stdint.h>
+  #include "Configuration.h" 
+  #include <stdint.h>
 
   #define LDIG0             14      //
   #define LDIG1             10       //
